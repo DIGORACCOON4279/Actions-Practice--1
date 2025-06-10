@@ -4,7 +4,6 @@ on: push
 
 jobs:
     first_job:
-        name: Tutorial CodigoFacilito Actions
         runs-on: ubuntu-latest
 
         outputs:
@@ -20,3 +19,12 @@ jobs:
               with:
                     name: archivo-test
                     path: test.log
+
+    segundo_job:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Descargar archivo
+              uses: actions/download-artifact@v4
+              with:
+                name: archivo-test
