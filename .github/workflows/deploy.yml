@@ -7,6 +7,9 @@ jobs:
         name: Tutorial CodigoFacilito Actions
         runs-on: ubuntu-latest
 
+        outputs:
+            salida: "${{ steps.step_1.outputs.my_variable }}"
+
         env:
             NAME: CodigoFacilito
 
@@ -23,6 +26,9 @@ jobs:
         needs: first_job
         runs-on: ubuntu-latest
 
+        env:
+            SALIDA: ${{ needs.first_job.outputs.salida }}
+
         steps:
             - name: Hola Mundo
-              run: echo "Hola Mundo Segundo"
+              run: echo "$SALIDA"
