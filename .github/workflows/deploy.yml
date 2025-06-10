@@ -4,6 +4,7 @@ on: push
 
 jobs:
     first_job:
+        name: Tutorial CodigoFacilito Actions
         runs-on: ubuntu-latest
 
         env:
