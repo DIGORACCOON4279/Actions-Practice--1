@@ -6,6 +6,9 @@ jobs:
     first_job:
         runs-on: ubuntu-latest
 
+        outputs:
+            salida: ${{ steps.step_1.outputs.my_variable }}
+
         steps:
             - name: Generar archivo
               run: |
@@ -21,7 +24,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Descargar archivo
+            - name: Descargar artefacto
               uses: actions/download-artifact@v4
               with:
                 name: archivo-test
+
+            - name: Cat file
+              run: cat test.log
