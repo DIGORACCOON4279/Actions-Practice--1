@@ -3,7 +3,7 @@ name: Deploy to server
 on: [push, workflow_dispatch]
 
 jobs:
-    fisrt-jobs:
+    first-jobs:
         runs-on: ubuntu-latest
 
         steps:
