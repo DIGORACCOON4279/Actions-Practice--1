@@ -4,31 +4,12 @@ on: push
 
 jobs:
     first_job:
-        runs-on: ubuntu-latest
+       runs-on: ubuntu-latest
 
-        outputs:
-            salida: ${{ steps.step_1.outputs.my_variable }}
+       strategy:
+        matrix:
+            message: ["Hola", "CodigoFacilito", "Bootcamp Github Actions"]
 
-        steps:
-            - name: Generar archivo
-              run: |
-                echo "Archivo prueba, hola" >> test.log
-
-            - name: Subir artefacto
-              uses: actions/upload-artifact@v4
-              with:
-                    name: archivo-test
-                    path: test.log
-
-    segundo_job:
-        needs: first_job
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Descargar artefacto
-              uses: actions/download-artifact@v4
-              with:
-                name: archivo-test
-
-            - name: Cat file
-              run: cat test.log
+       steps:
+        - name: Print message
+          run: echo "${{ matrix.message }}"
